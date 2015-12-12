@@ -13,20 +13,22 @@
 
         <!-- Custom styles for this template -->
     <link href="../assets/css/justified-nav.css" rel="stylesheet">
+     <link href="../assets/css/timeline.css" rel="stylesheet">
 
  <script src="../assets/js/post.js"></script>
+ <script src="../assets/js/timeline.js"></script>
 
 </head>
     <body>
     <div id="fb-root"></div>
 <script>
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
+    (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
 </script>
 
 <!-- Share to social facebook -->
@@ -35,8 +37,9 @@
 
       <!-- The justified navigation menu is meant for single line per list item.
            Multiple lines will require custom code not provided by Bootstrap. -->
+           
            <nav>
-               <div class="masthead">
+            <div class="masthead">
       <div class="row">
       <div class="col-xs-6 col-md-4">
         <h3 class="text-muted">Project name</h3>
@@ -97,10 +100,9 @@
 
                 {% endif %}
           </ul>
- 
-
         </nav>
       </div>
+
 
 
 <!-- <div class="btn-toolbar" role="toolbar" aria-label="...">

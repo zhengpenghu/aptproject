@@ -1,5 +1,6 @@
 function PostSave(postid) {
   var xhttp = new XMLHttpRequest();
+
   xhttp.onreadystatechange = function(){
 
     if (xhttp.readyState == 4 && xhttp.status == 200) {
@@ -14,6 +15,7 @@ function PostSave(postid) {
   		}
     }
   };
+
   xhttp.open("GET", "/PostSave?postid="+postid, true);
   xhttp.send();
   
@@ -38,27 +40,29 @@ function PostSave(postid) {
 //   xhttp.open("GET", "/PostSaveDelete?postid="+postid, true);
 //   xhttp.send();
 // }
-$(document).ready(function(){
-// this is the id of the form
-$("#commentform").submit(function(e) {
 
-    var url = "/AddComment"; // the script where you handle the form input.
-alert("hello Jquery");
-    $.ajax({
-           type: "POST",
-           url: url,
-           data: $("#idForm").serialize(), // serializes the form's elements.
-           success: function(data)
-           {
-               alert(data); // show response from the php script.
-           }
-         });
 
-    e.preventDefault(); // avoid to execute the actual submit of the form.
-});
+// $(document).ready(function(){
+// // this is the id of the form
+// $("#commentform").submit(function(e) {
+
+//     var url = "/AddComment"; // the script where you handle the form input.
+// alert("hello Jquery");
+//     $.ajax({
+//            type: "POST",
+//            url: url,
+//            data: $("#idForm").serialize(), // serializes the form's elements.
+//            success: function(data)
+//            {
+//                alert(data); // show response from the php script.
+//            }
+//          });
+
+//     e.preventDefault(); // avoid to execute the actual submit of the form.
+// });
 
 	
-};
+// };
 
 
 function AddComment(postid,comment){

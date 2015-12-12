@@ -74,7 +74,7 @@ class PostDisplay(webapp2.RequestHandler):
 			
 			giftImageList.append(images.get_serving_url(gift.image))
 			giftArticleList.append(gift.article)
-			giftHyperinkList.append(gift.hyperLink)
+			giftHyperinkList.append('/'+str(gift.hyperLink))
 
 
 
