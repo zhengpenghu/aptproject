@@ -1,0 +1,27 @@
+{% include "header.html" %}
+
+<div></div>
+Add gift
+
+postid is {{postid}}
+<form action="/{{upload_url}}?postid={{postid}}" method="post" enctype="multipart/form-data">
+
+	<div>link to /{{upload_url}}?postid={{postid}}</div>
+
+	<div>
+	dropzone here
+	<input type="file" name="file">
+</div>
+<div>
+<input type="text" placeholder="article here" name="article">
+</div>
+<div>
+<input type="text" placeholder="hyperLink" name="Link">
+</div>
+<input type="submit">Add gift</input>
+</form>
+
+
+
+
+{% include "footer.html" %}

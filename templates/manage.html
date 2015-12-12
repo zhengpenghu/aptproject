@@ -1,0 +1,25 @@
+{% include "header.html" %}
+
+<div></div>
+
+
+<!-- List your posts here in a timeline form -->
+
+<div>SHow the timeline here</div>
+<div>
+	{%for i in range(0,Postowned|length) %}
+		<div>post.name  is {{Postowned[i].name}}</div>
+		<div>Preview pic is
+		<a href="/Post?postid={{Postowned[i].id}}">
+		<img src="{{PostPreviewList[i]}}" align="middle" style="width:150px;height:100px"></a> 
+		</div>
+
+	{%endfor%}
+</div>
+<br>
+
+<div><a href="/PostCreate">Create a new post</a></div>
+
+
+
+{% include "footer.html" %}

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<title>Gift Show</title>
+     <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+        <!-- Custom styles for this template -->
+    <link href="../assets/css/justified-nav.css" rel="stylesheet">
+
+ <script src="../assets/js/post.js"></script>
+
+</head>
+    <body>
+    <div id="fb-root"></div>
+<script>
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+
+<!-- Share to social facebook -->
+<div class="fb-share-button" data-href="http://www.google.com" data-layout="button"></div>
+        <div class="container">
+
+      <!-- The justified navigation menu is meant for single line per list item.
+           Multiple lines will require custom code not provided by Bootstrap. -->
+           <nav>
+               <div class="masthead">
+      <div class="row">
+      <div class="col-xs-6 col-md-4">
+        <h3 class="text-muted">Project name</h3>
+        </div>
+    <div class="col-xs-6 col-md-4 pull-right">
+        <form class="navbar-form navbar-right" role="search" action="/search" method="get">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search your gift" name="searchContent">
+        </div>
+            <button type="submit" class="btn btn-primary"> Search</button>
+        </form>
+        </div>    
+      </div> <!-- row -->
+      </div>
+        </nav>      
+        <nav class=".navbar-fixed-top">
+          <ul class="nav nav-justified">
+          <li class="active"><a href="/">Home</a></li>
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Occasion<span class=" glyphicon glyphicon-chevron-down pull-right" aria-hidden="true"></span></a>
+                    <ul class="dropdown-menu">
+                    <li class="dropdown"><a href="/search?searchContent=Brithday">Brithday</a></li>
+                    <li><a href="/search?searchContent=Wedding">Wedding</a></li>
+                    <li><a href="/search?searchContent=New Year">New Year</a></li>
+                    <li><a href="/search?searchContent=Thanksgiving">Thanksgiving</a></li>
+                    <li><a href="/search?searchContent=Graduation">Graduation</a></li>
+                    <li><a href="/search?searchContent=Graduation">others</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Recipient<span class=" glyphicon glyphicon-chevron-down pull-right" aria-hidden="true"></span></a>
+                    <ul class="dropdown-menu">
+                    <li><a href="/search?searchContent=Boyfriend">Boyfriend</a></li>
+                    <li><a href="/search?searchContent=Girlfriend">Girlfriend</a></li>
+                    <li><a href="/search?searchContent=Parents">Parents</a></li>
+                    <li><a href="/search?searchContent=Kids">Kids</a></li>
+                    <li><a href="/search?searchContent=Myself">Myself</a></li>
+                    <li><a href="/search?searchContent=Friends">Friends</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Personality<span class=" glyphicon glyphicon-chevron-down pull-right" aria-hidden="true"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="/search?searchContent=Boyfriend">Outdoors</a></li>
+                    <li><a href="/search?searchContent=Girlfriend">Sports Fan</a></li>
+                    <li><a href="/search?searchContent=Parents">Food Lover</a></li>
+                    <li><a href="/search?searchContent=Kids">Cartoon Fan</a></li>
+                    </ul>
+                </li>
+                 {%if user %}
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user"></span>Logout<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                        <li><a href="/manage">My activity</a></li>
+                        <li><a href="{{logoutURL}}">Logout</a></li>
+                        </ul>
+
+                    </li>
+
+                {%else%}
+                    <li><a href="{{loginURL}}"><span class="glyphicon glyphicon-user"></span>Register/Login</a></li>
+
+                {% endif %}
+          </ul>
+ 
+
+        </nav>
+      </div>
+
+
+<!-- <div class="btn-toolbar" role="toolbar" aria-label="...">
+  <div class="btn-group" role="group" aria-label="...">123123</div>
+  <div class="btn-group" role="group" aria-label="...">.55555555555</div>
+  <div class="btn-group" role="group" aria-label="...">...</div>
+</div>
+ -->
+
+
+
+
+
+
+
+
+    

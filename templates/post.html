@@ -1,0 +1,82 @@
+{% include "header.html" %}
+ <script src="../assets/js/post.js"></script>
+
+
+
+
+
+<div class="container">
+<button id="postsave" class="glyphicon glyphicon-heart" style="color:grey" aria-hidden="true" onclick="PostSave({{postwant.id}})">{{postwant.savedCount}}</button>
+
+
+<span id="commentnumber" class="glyphicon glyphicon-comment" aria-hidden="true">{{postwant.commentList|length}}</span>
+<span id="postshare" class="glyphicon glyphicon-share" aria-hidden="true">{{postwant.sharetoSocialCount}}</span>
+
+<div>Display post here</div>
+{% for i in range(0,giftImageList|length) %}
+{{i}}
+<a href="http:{{giftHyperinkList[i]}}">
+<div><img src="{{giftImageList[i]}}" height="200" width="300"></div>
+</a>
+<div>{{giftArticleList[i]}}</div>
+
+{{giftHyperinkList[i]}}
+<!-- Share to social facebook -->
+<button class="fb-share-button" data-href="http://www.google.com" data-layout="button" onclick="PostShare({{postwant.id}})">
+	
+	Share to Facebook
+</button>
+{% endfor %}
+
+
+{%if OwnerLogin %}
+<div>If user login, add gift button here</div>
+<!-- <form action="/GiftAdd?'postid={{postwant.id}}" method="post"> -->
+<a href="/GiftAdd?postid={{postwant.id}}">
+<button type="button">Add more gifts</button>
+</a>
+{%endif%}
+<div>Display comments
+{%for i in range(postwant.commentList|length-1,-1,-1)%}
+<li>
+<div class="row">
+<div class="col-xs-12 col-md-8">
+		{{postwant.commentList[i].creator}}
+		{{postwant.commentList[i].date.date()}}  at {{postwant.commentList[i].date.hour}}h
+		<div>{{postwant.commentList[i].content}}</div>
+		
+		
+		<hr>
+</div>
+	</div>
+	
+	
+</li>
+
+{% endfor %}
+</div>
+
+{%if user %}
+<div class="row">
+<div class="col-xs-6 col-md-4">
+<form id="commentform" action="/AddComment?postid={{postwant.id}}" method="post">
+<!-- action="/AddComment?postid={{postwant.id}}" method="post" -->
+<input id="comment" type="text" placeholder="Leave your comments here" name="comment">
+<button id="commentsubmit" type="submit" onclick="AddComment">Submit your comment</button>
+
+<!-- 如果input type 不是 submit，也许可行 -->
+</form>
+</div>
+</div>
+{% endif %}
+
+</div>
+
+
+
+
+{% include "footer.html" %}
+
+
+
+

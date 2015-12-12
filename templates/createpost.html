@@ -1,0 +1,20 @@
+{% include "header.html" %}
+
+<form action="/PostCreateHandler" method="post">
+<div>
+	postname 
+	<input type="text" class="form-control" rows="3" name="name" placeholder="write your postname">we can use this to display the content
+</div>
+<div>
+	Tag your posts 
+	 <input type="text" class="form-control" placeholder="Tag1 Tag2" name="tags">
+	
+</div>
+<div>
+	Add gift
+
+</div>
+
+<button type="submit">Create Post</button>
+</form>
+{% include "footer.html" %}
