@@ -63,7 +63,7 @@ class Manage(webapp2.RequestHandler):
 			'Postowned':Postowned,
 			'PostPreviewList':PostPreviewList
 		}
-		template = JINJA_ENVIRONMENT.get_template('Manage.html')
+		template = JINJA_ENVIRONMENT.get_template('manage.html')
 		self.response.write(template.render(template_values))
 
 

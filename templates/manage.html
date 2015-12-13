@@ -4,12 +4,22 @@
 	<div class="timeline">
 	{%for i in range(0,Postowned|length) %}
     <div class="timeline-item active">
-        <div class="year"> {{Postowned[i].lastUpdateDate.year}}<span class="marker"><span class="dot"></span></span>
+    <div class="row">
+    <div class="col-md-4 col-xs-4"><div class="year"> {{Postowned[i].lastUpdateDate.month}}/{{Postowned[i].lastUpdateDate.year}}<span class="marker"><span class="dot"></span></span>
         </div>
-        <div class="info">{{Postowned[i].name}}
-        	<a href="/Post?postid={{Postowned[i].id}}">
+        </div>
+    <div class="col-md-8 col-xs-8">       
+    <div class="info">
+        <div align="middle"><font face="verdana" size="3">{{Postowned[i].name}}</font></div>
+        <div align="middle"><a href="/Post?postid={{Postowned[i].id}}">
 			<img src="{{PostPreviewList[i]}}" align="middle" style="width:150px;height:100px"></a> 
+			</div>    	
 		</div>
+		</div>
+
+
+    </div>
+
 
     </div>
 
@@ -36,7 +46,7 @@
 </div> -->
 
 
-<div><a href="/PostCreate">Create a new post</a></div>
+<div><a href="/PostCreate"><button class="btn btn-primary">Create a new post</button></a></div>
 
 
 

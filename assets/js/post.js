@@ -87,6 +87,7 @@ function AddComment(postid,comment){
 
 function PostShare(postid) {
   var xhttp = new XMLHttpRequest();
+  console.log("IN PostShare");
   xhttp.onreadystatechange = function() {
     if (xhttp.readyState == 4 && xhttp.status == 200) {
       document.getElementById("postsave").innerHTML = xhttp.responseText;

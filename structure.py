@@ -35,6 +35,7 @@ class Gift(ndb.Model):
 	date = ndb.DateTimeProperty(auto_now_add = True);
 	article = ndb.StringProperty()
 	image = ndb.BlobKeyProperty()
+	price = ndb.StringProperty()
 	hyperLink = ndb.StringProperty()		#true for selling post. false for social sharing
 	
 

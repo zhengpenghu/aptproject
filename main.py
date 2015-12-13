@@ -60,7 +60,7 @@ Routes=[
                 ('/PostSave',PostSave),
                 #('/PostSaveDelete',PostSaveDelete),
         ('/search',SearchHandler),
-        ('/GiftAdd',GiftAdd),
+        ('/GiftAdd/([^/]+)',GiftAdd),
         	#('/GiftAddHandler',GiftAddHandler),
         	('/UploadHandler/([^/]+)',UploadHandler),
         ('/Error', Error)]

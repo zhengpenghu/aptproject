@@ -1,6 +1,17 @@
 {% include "header.html" %}
- <script src="../assets/js/post.js"></script>
 
+<script>
+$( document ).ready(function() {
+    console.log( "ready!" );
+    var x = document.URL;
+    //x = "https://www.utexas.edu"
+    // console("STOP");
+    document.getElementById("facebook").setAttribute("data-href",x);
+    jQuery('#qrcode').qrcode(x);
+    //document.getElementById("facebook").style = "color: red";
+});
+
+</script>
 
 
 
@@ -11,47 +22,64 @@
 
 <span id="commentnumber" class="glyphicon glyphicon-comment" aria-hidden="true">{{postwant.commentList|length}}</span>
 <span id="postshare" class="glyphicon glyphicon-share" aria-hidden="true">{{postwant.sharetoSocialCount}}</span>
+<!-- Share to social facebook -->
+<button id="facebook" class="fb-share-button" data-href="GOOGLE.COM" data-layout="button" onclick="PostShare({{postwant.id}})">
+</button>
 
-<div>Display post here</div>
+<div style="text-align: center"><h2>{{postwant.name}}</h2></div>
 {% for i in range(0,giftImageList|length) %}
 {{i}}
-<a href="http:{{giftHyperinkList[i]}}">
-<div><img src="{{giftImageList[i]}}" height="200" width="300"></div>
+<a href="{{giftHyperinkList[i]}}">
+<div><img style="max-width: 100%; max-height: 100%; display:block; margin:auto;" src="{{giftImageList[i]}}" height="200" width="300"></div>
 </a>
-<div>{{giftArticleList[i]}}</div>
+<div><h4>{{giftArticleList[i]}}</h4></div>
 
-{{giftHyperinkList[i]}}
-<!-- Share to social facebook -->
-<button class="fb-share-button" data-href="http://www.google.com" data-layout="button" onclick="PostShare({{postwant.id}})">
-	
-	Share to Facebook
-</button>
+<!-- {{giftHyperinkList[i]}} -->
+
 {% endfor %}
 
 
+<div class="row">
+<div class="col-xs-8 col-md-4">
 {%if OwnerLogin %}
-<div>If user login, add gift button here</div>
-<!-- <form action="/GiftAdd?'postid={{postwant.id}}" method="post"> -->
-<a href="/GiftAdd?postid={{postwant.id}}">
-<button type="button">Add more gifts</button>
+<!-- <a href="/GiftAdd?postid={{postwant.id}}"> -->
+<a href="/GiftAdd/{{postwant.id}}">
+<button type="button" class="btn btn-success">Add more gifts</button>
 </a>
+<!-- <form action="/GiftAdd?'postid={{postwant.id}}" method="post"> -->
 {%endif%}
-<div>Display comments
+</div>
+	<div class="col-xs-4 col-md-4"><h3 style="text-align:center">Share with QRcode!</h3></div>
+	</div>
+	<div class="row"><div class="col-xs-6 col-md-4"></div>
+	<div class="col-xs-4 col-md-4"><div id="qrcode"></div></div>
+</div>
+<div></div>
+
+<!-- <div class="col-xs-6 col-md-4">
+{%if OwnerLogin %}
+<a href="/GiftAdd?postid={{postwant.id}}">
+<button type="button" class="btn btn-success">Add more gifts</button>
+</a>
+<!-- <form action="/GiftAdd?'postid={{postwant.id}}" method="post">
+{%endif%}
+</div> -->
+ -->
+<hr>
+<div><h3>Comments</h3>
 {%for i in range(postwant.commentList|length-1,-1,-1)%}
-<li>
+<!-- <li> -->
 <div class="row">
 <div class="col-xs-12 col-md-8">
-		{{postwant.commentList[i].creator}}
-		{{postwant.commentList[i].date.date()}}  at {{postwant.commentList[i].date.hour}}h
+		<h4><small>{{postwant.commentList[i].creator}} {{postwant.commentList[i].date.date()}}  at {{postwant.commentList[i].date.hour}}h</small></h4>
+		
 		<div>{{postwant.commentList[i].content}}</div>
 		
 		
 		<hr>
 </div>
 	</div>
-	
-	
-</li>
+<!-- </li> -->
 
 {% endfor %}
 </div>
@@ -61,8 +89,10 @@
 <div class="col-xs-6 col-md-4">
 <form id="commentform" action="/AddComment?postid={{postwant.id}}" method="post">
 <!-- action="/AddComment?postid={{postwant.id}}" method="post" -->
-<input id="comment" type="text" placeholder="Leave your comments here" name="comment">
-<button id="commentsubmit" type="submit" onclick="AddComment">Submit your comment</button>
+<textarea id="comment" type="text" placeholder="Leave your comments here" name="comment"></textarea>
+<div>
+	<button id="commentsubmit" type="submit" onclick="AddComment" class="btn btn-success">Submit your comment</button>
+</div>
 
 <!-- 如果input type 不是 submit，也许可行 -->
 </form>

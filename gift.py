@@ -36,12 +36,14 @@ JINJA_ENVIRONMENT = jinja2.Environment(
     autoescape=True)
 
 class GiftAdd(webapp2.RequestHandler):
-	def get(self):
+	def get(self,postid):
 		user = users.get_current_user()
 		if user is None:
 			pass
-		postid = self.request.get("postid")	
+		# postid = self.request.get("postid")	
 		upload_url = blobstore.create_upload_url('/UploadHandler/%s'%postid)
+		# upload_url = blobstore.create_upload_url('/UploadHandler/')
+		print upload_url
 
 		template_values = {
 			'loginURL':users.create_login_url(self.request.uri),
@@ -82,6 +84,7 @@ class UploadHandler(blobstore_handlers.BlobstoreUploadHandler):
 			self.redirect('/')
 
 		article = self.request.get("article")
+		price = self.request.get("price")
 		hyperLink= self.request.get("Link")
 		# print "article"
 		# print article
@@ -90,8 +93,8 @@ class UploadHandler(blobstore_handlers.BlobstoreUploadHandler):
 		# print "type of postid"
 		# print type(postid)
 
-		# print "length of upload"
-		# print len(upload)
+		print "length of upload"
+		print len(upload)
 		# assert(False)
 
 		post_query = Post.query()
@@ -100,10 +103,9 @@ class UploadHandler(blobstore_handlers.BlobstoreUploadHandler):
 				for item in upload:
 					gift=Gift()
 					gift.image=item.key()
-					print "item key"
-					print item.key
 					gift.article=article
 					gift.hyperLink=hyperLink
+					gift.price=price
 					gift.put()
 
 					s.giftList.append(gift)

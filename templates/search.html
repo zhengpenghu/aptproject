@@ -1,6 +1,36 @@
 {% include "header.html" %}
 
+<div class="container">
+<div class="panel panel-default">
+	<div class="panel-body">
+		{% for i in range(0,PostsList|length) %}
+			<a href="/Post?postid={{PostsList[i].id}}">
+			<div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="panel panel-default" style="height:400px">
+            <div class="panel-body">
+            	 <FIGURE>
+            	<FIGCAPTION style="text-align: center; font-size: large;">{{PostsList[i].name}}</FIGCAPTION>
+            	<img align="center" class="img-rounded img-responsive displayed" src="{{PostPreviewList[i]}}" style="width:180px;height:150px">
+            	</FIGURE>
+            	<div class="panel-footer" style="height:200px">
+            	<div>{{PostsList[i].giftList[0].article[:104]}}...</div>
+            <span class="glyphicon glyphicon-heart" aria-hidden="true">{{PostsList[i].savedCount}}</span>
+            <span class="glyphicon glyphicon-comment" aria-hidden="true">{{PostsList[i].commentList|length}}</span>
+            <span class="glyphicon glyphicon-share" aria-hidden="true">{{PostsList[i].sharetoSocialCount}}</span>
+            </div>
+            
+            </div>
+           
+            </div>
+            </div>
+        </a>
+		{%endfor%}
+	</div>
+</div>
+</div> <!-- container -->
 
+
+<!-- 
 {% for i in range(0,PostsList|length) %}
 <a href="/Post?postid={{PostsList[i].id}}">
             <FIGURE>
@@ -13,6 +43,6 @@
 
 <div></div>
 {%endfor%}
-
+ -->
 
 {% include "footer.html" %}

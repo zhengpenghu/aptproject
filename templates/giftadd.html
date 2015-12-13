@@ -1,27 +1,56 @@
 {% include "header.html" %}
+<script>
+function Hide(button) {
+    button.style.visibility = "hidden";
+}
+$(document).ready(function(){
+    $("#upload").on('click',function(){
+        var r= $('<table style="text-align: center;"><tr><td><INPUT TYPE="button" style="margin-top:5px" onClick="history.go(0)" VALUE="Submit" class="btn btn-primary btn-xs more"></td><td width="400"><p style="margin-top:15px">Please Submit The Uploaded Before Adding More Photos :)</p></td></tr></table>');
+        $("div.upload-area").append(r);
+        });
+    });
+</script>
 
-<div></div>
-Add gift
-
-postid is {{postid}}
-<form action="/{{upload_url}}?postid={{postid}}" method="post" enctype="multipart/form-data">
-
-	<div>link to /{{upload_url}}?postid={{postid}}</div>
-
-	<div>
-	dropzone here
-	<input type="file" name="file">
+<div><h2><small>Add Gift</small>
+</h3>
 </div>
+
+<!-- <div class="upload-area">
+	<form action="/{{upload_url}}?postid={{postid}}" method="post" enctype="multipart/form-data" class="dropzone"
+        id="my-awesome-dropzone"><div class="fallback"><input type="file" name="file"></div>
+	
+</form>
 <div>
-<input type="text" placeholder="article here" name="article">
+	<input type="text" placeholder="price" name="price">
 </div>
 <div>
 <input type="text" placeholder="hyperLink" name="Link">
 </div>
-<input type="submit">Add gift</input>
+<div>
+<textarea placeholder="article here" name="article"></textarea> 
+</div>
+
+<button type="submit" class="btn btn-success">Add gift</button>
+</div> -->
+uploadurl:
+{{upload_url}}
+<a href="http://www.google.com">Test hyerlink</a>
+<form action="{{upload_url}}" method="post" enctype="multipart/form-data" 
+        >
+        <!-- <div class="fallback"> -->
+        <input type="file" name="file">
+        <!-- </div> -->
+<div>
+	<input type="text" placeholder="price" name="price">
+</div>
+<div>
+<input type="text" placeholder="hyperLink" name="Link">
+</div>
+<div>
+<textarea placeholder="article here" name="article"></textarea> 
+</div>
+<button type="submit" class="btn btn-success">Add gift</button>
 </form>
-
-
 
 
 {% include "footer.html" %}

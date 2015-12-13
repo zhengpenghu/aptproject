@@ -65,16 +65,16 @@ class PostDisplay(webapp2.RequestHandler):
 			OwnerLogin =False 
 
 		for gift in postwant.giftList:
-			print "length"
-			print len(postwant.giftList)
-			print "what is gift"
-			print gift.hyperLink
-			print "imageurl"
-			print images.get_serving_url(gift.image)
+			# print "length"
+			# print len(postwant.giftList)
+			# print "what is gift"
+			# print gift.hyperLink
+			# print "imageurl"
+			# print images.get_serving_url(gift.image)
 			
 			giftImageList.append(images.get_serving_url(gift.image))
 			giftArticleList.append(gift.article)
-			giftHyperinkList.append('/'+str(gift.hyperLink))
+			giftHyperinkList.append(str(gift.hyperLink))
 
 
 
@@ -136,7 +136,8 @@ class PostCreateHandler(webapp2.RequestHandler):
 		post.put()
 
 		params = urllib.urlencode({'postid': hashid})
-		self.redirect('/GiftAdd?'+params)
+		self.redirect('/GiftAdd/'+hashid)
+		# self.redirect('/GiftAdd?'+params)
 
 class CommentHandler(webapp2.RequestHandler):
 	def post(self):
@@ -169,6 +170,20 @@ class CommentHandler(webapp2.RequestHandler):
 
 		params = urllib.urlencode({'postid': postid})
 		self.redirect('/Post?'+params)
+
+class PostDelete(webapp2.RequestHandler):
+	def post(self):
+		deletePostlist =[]
+		deletePostlist=self.request.get_all('deleteCheckbox')
+		post_query = Post.query()
+
+		for p in post_query:
+			if p.id in deletePostlist:
+				for i in range(0,len(p.giftList)):
+					Gift.delete_serving_url(p.giftList[i].image)
+					blobstore.delete(p.giftList[i].image,rpc=None)
+				p.key.delete()
+		self.redirect('/manage')
 
 
 class PostSave(webapp2.RequestHandler):
