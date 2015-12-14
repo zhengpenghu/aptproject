@@ -70,11 +70,9 @@ function newComment(creater,time,content){
 
 function AddComment(postid){
 	
-  {
       //if (xhttp.readyState == 4 && xhttp.status == 200) 
-    {
     	var comment = document.getElementById("comment").value;  //got
-      document.getElementById("comment").value="";
+      
       var time = new Date().toString();
       var user = document.getElementById("userid").innerHTML;
 
@@ -95,12 +93,11 @@ function AddComment(postid){
     var newdiv = document.createElement('div');
     newdiv.innerHTML= fullhtml;
     newdiv.setAttribute('class', 'row'); 
-      document.getElementById('commentlist').insertBefore(newdiv, document.getElementById('commentlist').firstChild);     
-    }
-  };
+    document.getElementById('commentlist').insertBefore(newdiv, document.getElementById('commentlist').firstChild);     
+
 
   $("#commentform").submit();
-
+  document.getElementById("comment").value="";
 
 }
 
@@ -108,14 +105,14 @@ function AddComment(postid){
 
 function PostShare(postid) {
   var xhttp = new XMLHttpRequest();
-  alert("in PostShare");
+  //alert("in PostShare");
   console.log("IN PostShare");
   xhttp.onreadystatechange = function() {
     if (xhttp.readyState == 4 && xhttp.status == 200) {
       document.getElementById("postsave").innerHTML = xhttp.responseText;
     }
   };
-  alert("In post PostShare");
+  //alert("In post PostShare");
   xhttp.open("GET", "/PostShare?postid="+postid, true);
   xhttp.send();
 }
@@ -129,7 +126,7 @@ $(document).ready(function(){
     //alert("submit");
     $("#commentform").submit(function(e){
     var postData = $(this).serializeArray();
-    alert("postdata"+postData);
+    //alert("postdata"+postData);
     var formURL = $(this).attr("action");
     $.ajax(
     {
