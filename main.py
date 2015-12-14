@@ -47,6 +47,7 @@ from error import Error
 from gift import GiftAdd
 #from gift import GiftAddHandler
 from gift import UploadHandler
+from gift import GiftTransfer
 
 from search import SearchHandler
 
@@ -65,6 +66,7 @@ Routes=[
         ('/GiftAdd/([^/]+)',GiftAdd),
         	#('/GiftAddHandler',GiftAddHandler),
         	('/UploadHandler/([^/]+)',UploadHandler),
+                ('/GiftTransfer',GiftTransfer),
         ('/Error', Error)]
 
 app = webapp2.WSGIApplication(Routes, debug=True)

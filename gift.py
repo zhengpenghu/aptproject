@@ -116,7 +116,17 @@ class UploadHandler(blobstore_handlers.BlobstoreUploadHandler):
 		#assert(False)
 
 		params = urllib.urlencode({'postid': postid})
+		self.redirect('/GiftTransfer?'+params)
+
+class GiftTransfer(webapp2.RequestHandler):
+	def get(self):
+		postid = self.request.get("postid")
+		post_query = Post.query()
+		for s in post_query:
+			if s.id==postid:
+				time.sleep(0.5)
+
+		print "in gift transter"
+		params = urllib.urlencode({'postid': postid})
 		self.redirect('/Post?'+params)
-
-
 

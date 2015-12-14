@@ -33,16 +33,16 @@ $(document).ready(function(){
 <button type="submit" class="btn btn-success">Add gift</button>
 </div> -->
 
-<form action="{{upload_url}}" method="post" enctype="multipart/form-data" 
-        >
+<form action="{{upload_url}}" method="post" enctype="multipart/form-data" >
         <!-- <div class="fallback"> -->
-        <input type="file" name="file">
+        <a class="file-input-wrapper btn btn-default "><span>Search for a gift image to add</span><input type="file" name="file" title="Search for a file to add" class="btn-primary" style="left: -77px; top: 4px;" data-filename-placement="inside" required></a>
         <!-- </div> -->
+
 <div>
-	<input type="text" placeholder="price" name="price">
+	<input type="text" placeholder="price" name="price" required>
 </div>
 <div>
-<input type="text" placeholder="hyperLink" name="Link">
+<input type="text" placeholder="hyperLink" name="Link" required>
 </div>
 <div>
 <textarea placeholder="article here" name="article"></textarea> 
