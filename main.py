@@ -31,6 +31,7 @@ from structure import Post
 from mainpage import MainPage
 
 from manage import Manage
+from manage import PostDelete
 
 from postview import PostCreate
 from postview import PostCreateHandler
@@ -52,6 +53,7 @@ from search import SearchHandler
 Routes=[
         ('/', MainPage),
         ('/manage', Manage),
+                ('/DeletePost',PostDelete),
         ('/PostCreate',PostCreate),
         	('/PostCreateHandler',PostCreateHandler),
         ('/Post',PostDisplay),

@@ -66,6 +66,19 @@ class Manage(webapp2.RequestHandler):
 		template = JINJA_ENVIRONMENT.get_template('manage.html')
 		self.response.write(template.render(template_values))
 
+class PostDelete(webapp2.RequestHandler):
+	def post(self):
+		deletePostlist =[]
+		deletePostlist=self.request.get_all('deleteCheckbox')
+		post_query = Post.query()
+
+		for p in post_query:
+			if p.id in deletePostlist:
+				for i in range(0,len(p.giftList)):
+					images.delete_serving_url(p.giftList[i].image)
+					blobstore.delete(p.giftList[i].image,rpc=None)
+				p.key.delete()
+		self.redirect('/manage')
 
 
 

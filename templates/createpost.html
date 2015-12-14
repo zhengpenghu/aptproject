@@ -1,20 +1,22 @@
 {% include "header.html" %}
-
-<form action="/PostCreateHandler" method="post">
+<div class="container">
+	<form action="/PostCreateHandler" method="post">
 <div>
-	postname 
-	<input type="text" class="form-control" rows="3" name="name" placeholder="write your postname">we can use this to display the content
+	<h4>postname</h4> 
+	<input type="text" class="form-control" rows="3" name="name" placeholder="write your postname" style="width: 300px">
 </div>
 <div>
-	Tag your posts 
-	 <input type="text" class="form-control" placeholder="Tag1 Tag2" name="tags">
+	<h4>Tag your posts</h4> 
+	 <input type="text" class="form-control" placeholder="Tag1 Tag2" name="tags" style="width: 300px">
 	
 </div>
 <div>
-	Add gift
+<!-- <h4>Add gift</h4>  -->
+</div>
+
+<button type="submit" class="btn btn-success">Create Post</button>
+</form>
 
 </div>
 
-<button type="submit">Create Post</button>
-</form>
 {% include "footer.html" %}

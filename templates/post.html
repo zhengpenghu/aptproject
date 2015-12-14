@@ -21,10 +21,10 @@ $( document ).ready(function() {
 
 
 <span id="commentnumber" class="glyphicon glyphicon-comment" aria-hidden="true">{{postwant.commentList|length}}</span>
-<span id="postshare" class="glyphicon glyphicon-share" aria-hidden="true">{{postwant.sharetoSocialCount}}</span>
+<!-- <span id="postshare" class="glyphicon glyphicon-share" aria-hidden="true">{{postwant.sharetoSocialCount}}</span> -->
 <!-- Share to social facebook -->
-<button id="facebook" class="fb-share-button" data-href="GOOGLE.COM" data-layout="button" onclick="PostShare({{postwant.id}})">
-</button>
+<div class="fb-share-button" id="facebook" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count"></div>
+
 
 <div style="text-align: center"><h2>{{postwant.name}}</h2></div>
 {% for i in range(0,giftImageList|length) %}
@@ -64,14 +64,15 @@ $( document ).ready(function() {
 <!-- <form action="/GiftAdd?'postid={{postwant.id}}" method="post">
 {%endif%}
 </div> -->
- -->
+
 <hr>
-<div><h3>Comments</h3>
+<h3>Comments</h3>
+<div id="commentlist">
 {%for i in range(postwant.commentList|length-1,-1,-1)%}
 <!-- <li> -->
 <div class="row">
 <div class="col-xs-12 col-md-8">
-		<h4><small>{{postwant.commentList[i].creator}} {{postwant.commentList[i].date.date()}}  at {{postwant.commentList[i].date.hour}}h</small></h4>
+		<h4><small>{{postwant.commentList[i].creator}} {{commentTimeList[i]}}</small></h4>
 		
 		<div>{{postwant.commentList[i].content}}</div>
 		
@@ -87,23 +88,26 @@ $( document ).ready(function() {
 {%if user %}
 <div class="row">
 <div class="col-xs-6 col-md-4">
-<form id="commentform" action="/AddComment?postid={{postwant.id}}" method="post">
+<!--  -->
+<form id="commentform" action="/AddComment?postid={{postwant.id}}" method="post" name="commentform">
 <!-- action="/AddComment?postid={{postwant.id}}" method="post" -->
 <textarea id="comment" type="text" placeholder="Leave your comments here" name="comment"></textarea>
 <div>
-	<button id="commentsubmit" type="submit" onclick="AddComment" class="btn btn-success">Submit your comment</button>
+	<!-- <button id="commentsubmit" type="submit" onclick="AddComment();" class="btn btn-success">Submit your comment</button> -->
 </div>
 
 <!-- 如果input type 不是 submit，也许可行 -->
 </form>
+<button id="commentsubmit" onclick="AddComment({{postwant.id}});" class="btn btn-success">Submit your comment</button>
 </div>
 </div>
 {% endif %}
 
 </div>
 
-
-
+<div id="userid" style="display: none;">
+{{user}}
+</div>
 
 {% include "footer.html" %}
 

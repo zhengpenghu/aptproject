@@ -42,7 +42,7 @@ class MainPage(webapp2.RequestHandler):
 		PostsList = []
 		PostPreviewList =[]
 
-		for post in Post.query().order(Post.lastUpdateDate):#fetch(16)
+		for post in Post.query().order(Post.lastUpdateDate).fetch(4):
 			PostsList.append(post)
 			try:
 				previewImage = images.get_serving_url(post.giftList[0].image)
@@ -64,18 +64,28 @@ class MainPage(webapp2.RequestHandler):
 		
 		self.response.write(template.render(template_values))
 
-
+# not work yet
 class DynamicLoadHandler(webapp2.RequestHandler):
 	def get(self):
 		AppendList =[];
+		PostsList = []
+		PostPreviewList =[]
 		StartIndex = self.request.get("index")
 		#index is 16,32,48,64...
 		
-		fullList = Post.query().order(Post.lastUpdateDate).fetch(StartIndex+16)
-		AppendList = fullList[StartIndex:StartIndex+16]
+		fullList = Post.query().order(Post.lastUpdateDate).fetch(4,offset=StartIndex)
+		# AppendList = fullList[StartIndex:StartIndex+4]
 
-		#for post in Post.query().order(Post.lastUpdateDate).fetch(StartIndex+16):
-			#AppendList
+		for post in fullList:
+			PostsList.append(post)
+			try:
+				previewImage = images.get_serving_url(post.giftList[0].image)
+			except Exception,e:
+				previewImage = "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTt9ALzNY6Ef_7To_OnTLEkUpXYu6jW6-DB4oi6JRxD2mdBdD293lcUdg"
+			# if previewImage is None:
+			# 	pass			
+			PostPreviewList.append(previewImage)
+			self.response.write()
 
 
 

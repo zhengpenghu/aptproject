@@ -3,6 +3,13 @@
 <div class="container">
 <div class="panel panel-default">
 	<div class="panel-body">
+      {%if PostsList|length ==0 %}
+      <div>
+            <img src="http://blog.sacars4sale.co.za/wp-content/uploads/2015/09/not-found.png" style="width:200px; height:200px">
+            <h3>Sorry, We will add more content soon</h3>
+      </div>
+      {% endif %}
+
 		{% for i in range(0,PostsList|length) %}
 			<a href="/Post?postid={{PostsList[i].id}}">
 			<div class="col-md-3 col-sm-6 col-xs-12">

@@ -20,26 +20,23 @@
 <script src="../assets/js/dropzone.js"></script>
  <script src="../assets/js/post.js"></script>
  <script src="../assets/js/timeline.js"></script>
-
+ <script src="../assets/js/manage.js"></script>
 </head>
     <body>
-    <!-- <div id="fb-root"></div> -->
-<script>
-    (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
-</script>
 
-
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
 
 <!-- Share to social facebook -->
 <!-- <div class="fb-share-button" data-href="http://www.google.com" data-layout="button"></div> -->
-        <div class="container">
+        <div class="container" style="background-image:url(/img/Happy-New-Year-2016-Images-4.jpg); height: 200px">
 
       <!-- The justified navigation menu is meant for single line per list item.
            Multiple lines will require custom code not provided by Bootstrap. -->
@@ -48,7 +45,7 @@
             <div class="masthead">
       <div class="row">
       <div class="col-xs-6 col-md-4">
-        <h3 class="text-muted">Project name</h3>
+        <h3 class="text-muted">GiftShow</h3>
         </div>
     <div class="col-xs-6 col-md-4 pull-right">
         <form class="navbar-form navbar-right" role="search" action="/search" method="get">
@@ -61,6 +58,7 @@
       </div> <!-- row -->
       </div>
         </nav>      
+        <div style="height:90px"></div>
         <nav class=".navbar-fixed-top">
           <ul class="nav nav-justified">
           <li class="active"><a href="/">Home</a></li>

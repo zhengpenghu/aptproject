@@ -45,6 +45,7 @@ class PostDisplay(webapp2.RequestHandler):
 		giftImageList =[]
 		giftArticleList = []
 		giftHyperinkList = []
+		commentTimeList = []
 
 		postQuery= Post.query()
 		for post in postQuery:
@@ -76,7 +77,10 @@ class PostDisplay(webapp2.RequestHandler):
 			giftArticleList.append(gift.article)
 			giftHyperinkList.append(str(gift.hyperLink))
 
-
+		for item in postwant.commentList:
+			# Sun Dec 13 2015 20:15:57 GMT-0600 (CST)
+			ttime = '{0:%a} {0:%b} {0:%d} {0:%Y} {0:%X}'.format(item.date)+" GMT-0600 (CST)"
+			commentTimeList.append(ttime)
 
 		template_values = {
 			'loginURL':users.create_login_url(self.request.uri),
@@ -87,7 +91,8 @@ class PostDisplay(webapp2.RequestHandler):
 		    'giftArticleList':giftArticleList,
 		    'giftHyperinkList':giftHyperinkList,
 		    'OwnerLogin':OwnerLogin,
-		    'Postsave':Postsave
+		    'Postsave':Postsave,
+		    'commentTimeList':commentTimeList
 
 		}
 		template = JINJA_ENVIRONMENT.get_template('post.html')
@@ -136,7 +141,7 @@ class PostCreateHandler(webapp2.RequestHandler):
 		post.put()
 
 		params = urllib.urlencode({'postid': hashid})
-		self.redirect('/GiftAdd/'+hashid)
+		self.redirect('/GiftAdd/'+str(hashid))
 		# self.redirect('/GiftAdd?'+params)
 
 class CommentHandler(webapp2.RequestHandler):
@@ -171,19 +176,6 @@ class CommentHandler(webapp2.RequestHandler):
 		params = urllib.urlencode({'postid': postid})
 		self.redirect('/Post?'+params)
 
-class PostDelete(webapp2.RequestHandler):
-	def post(self):
-		deletePostlist =[]
-		deletePostlist=self.request.get_all('deleteCheckbox')
-		post_query = Post.query()
-
-		for p in post_query:
-			if p.id in deletePostlist:
-				for i in range(0,len(p.giftList)):
-					Gift.delete_serving_url(p.giftList[i].image)
-					blobstore.delete(p.giftList[i].image,rpc=None)
-				p.key.delete()
-		self.redirect('/manage')
 
 
 class PostSave(webapp2.RequestHandler):
