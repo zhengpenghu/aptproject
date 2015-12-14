@@ -42,7 +42,7 @@ class MainPage(webapp2.RequestHandler):
 		PostsList = []
 		PostPreviewList =[]
 
-		for post in Post.query().order(Post.lastUpdateDate).fetch(4):
+		for post in Post.query().order(Post.lastUpdateDate):
 			PostsList.append(post)
 			try:
 				previewImage = images.get_serving_url(post.giftList[0].image)

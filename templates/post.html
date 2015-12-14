@@ -28,7 +28,6 @@ $( document ).ready(function() {
 
 <div style="text-align: center"><h2>{{postwant.name}}</h2></div>
 {% for i in range(0,giftImageList|length) %}
-{{i}}
 <a href="{{giftHyperinkList[i]}}">
 <div><img style="max-width: 100%; max-height: 100%; display:block; margin:auto;" src="{{giftImageList[i]}}" height="200" width="300"></div>
 </a>
@@ -48,7 +47,11 @@ $( document ).ready(function() {
 </a>
 <!-- <form action="/GiftAdd?'postid={{postwant.id}}" method="post"> -->
 {%endif%}
+
 </div>
+<hr>
+</div>
+<div class="row"><div class="col-xs-6 col-md-4"></div>
 	<div class="col-xs-4 col-md-4"><h3 style="text-align:center">Share with QRcode!</h3></div>
 	</div>
 	<div class="row"><div class="col-xs-6 col-md-4"></div>

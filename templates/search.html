@@ -16,10 +16,10 @@
             <div class="panel panel-default" style="height:400px">
             <div class="panel-body">
             	 <FIGURE>
-            	<FIGCAPTION style="text-align: center; font-size: large;">{{PostsList[i].name}}</FIGCAPTION>
+            	<FIGCAPTION style="text-align: center; font-size: large; height: 50px" >{{PostsList[i].name}}</FIGCAPTION>
             	<img align="center" class="img-rounded img-responsive displayed" src="{{PostPreviewList[i]}}" style="width:180px;height:150px">
             	</FIGURE>
-            	<div class="panel-footer" style="height:200px">
+            	<div class="panel-footer" style="height:180px">
             	<div>{{PostsList[i].giftList[0].article[:104]}}...</div>
             <span class="glyphicon glyphicon-heart" aria-hidden="true">{{PostsList[i].savedCount}}</span>
             <span class="glyphicon glyphicon-comment" aria-hidden="true">{{PostsList[i].commentList|length}}</span>
